@@ -20,8 +20,8 @@ lettersUpper = letters.map(toUpper);
 var get = document.querySelector("#generate");
 
 get.addEventListener("click", function () {
-    ps = generatePassword();
-    document.getElementById("password").placeholder = ps;
+    pass = generatePassword();
+    document.getElementById("password").placeholder = pass;
 });
 
 
@@ -108,12 +108,12 @@ function generatePassword() {
         password.push(pickChoices);
     }
     
-    var ps = password.join("");
-    UserInput(ps);
-    return ps;
+    var pass = password.join("");
+    UserInput(pass);
+    return pass;
 }
 
-function UserInput(ps) {
-    document.getElementById("password").textContent = ps;
+function UserInput(pass) {
+    document.getElementById("password").textContent = pass;
 
 }
