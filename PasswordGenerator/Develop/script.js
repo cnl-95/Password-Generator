@@ -6,7 +6,7 @@ var valueLowercase;
 
 character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
 
 
 var choices;
@@ -15,7 +15,7 @@ var toUpper = function (x) {
     return x.toUpperCase();
 };
 
-alpha2 = alpha.map(toUpper);
+lettersUpper = letters.map(toUpper);
 
 var get = document.querySelector("#generate");
 
@@ -31,9 +31,9 @@ function generatePassword() {
     
     if (!value) {
         alert("Please input a value between 8-128");
-    } else if (value < 8 || value > 128) {
+    } else if (value < 7 || value > 129) {
         
-        value = parseInt(prompt("Length must be between 8-128 characters."));
+        value = parseInt(prompt("Invalid response, please choose between 8-128 charcters."));
 
     } else {
         valueNumber = confirm("Would you like to include numbers?");
@@ -50,39 +50,39 @@ function generatePassword() {
     
     else if (valueCharacter && valueNumber && valueUppercase && valueLowercase) {
 
-        choices = character.concat(number, alpha, alpha2);
+        choices = character.concat(number, letters, lettersUpper);
     }
     
     else if (valueCharacter && valueNumber && valueUppercase) {
-        choices = character.concat(number, alpha2);
+        choices = character.concat(number, lettersUpper);
     }
     else if (valueCharacter && valueNumber && valueLowercase) {
-        choices = character.concat(number, alpha);
+        choices = character.concat(number, letters);
     }
     else if (valueCharacter && valueLowercase && valueUppercase) {
-        choices = character.concat(alpha, alpha2);
+        choices = character.concat(letters, lettersUpper);
     }
     else if (valueNumber && valueLowercase && valueUppercase) {
-        choices = number.concat(alpha, alpha2);
+        choices = number.concat(letters, lettersUpper);
     }
     
     else if (valueCharacter && valueNumber) {
         choices = character.concat(number);
 
     } else if (valueCharacter && valueLowercase) {
-        choices = character.concat(alpha);
+        choices = character.concat(letters);
 
     } else if (valueCharacter && valueUppercase) {
-        choices = character.concat(alpha2);
+        choices = character.concat(lettersUpper);
     }
     else if (valueLowercase && valueNumber) {
-        choices = alpha.concat(number);
+        choices = letters.concat(number);
 
     } else if (valueLowercase && valueUppercase) {
-        choices = alpha.concat(alpha2);
+        choices = letters.concat(lettersUpper);
 
     } else if (valueNumber && valueUppercase) {
-        choices = number.concat(alpha2);
+        choices = number.concat(lettersUpper);
     }
     
     else if (valueCharacter) {
@@ -92,11 +92,11 @@ function generatePassword() {
         choices = number;
     }
     else if (valueLowercase) {
-        choices = alpha;
+        choices = letters;
     }
     
     else if (valueUppercase) {
-        choices = space.concat(alpha2);
+        choices = space.concat(lettersUpper);
     };
 
   
